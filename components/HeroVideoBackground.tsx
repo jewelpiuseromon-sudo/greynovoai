@@ -10,8 +10,8 @@ export default function HeroVideoBackground() {
     const [loading, setLoading] = useState(true);
     const [loadProgress, setLoadProgress] = useState(0);
     const framesRef = useRef<HTMLImageElement[]>([]);
-    const animationFrameRef = useRef<number>();
-    const startTimeRef = useRef<number>();
+    const animationFrameRef = useRef<number | null>(null);
+    const startTimeRef = useRef<number | null>(null);
 
     // Preload all frames
     useEffect(() => {
