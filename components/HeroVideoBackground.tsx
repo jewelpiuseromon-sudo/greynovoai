@@ -124,6 +124,8 @@ export default function HeroVideoBackground() {
                 className="fixed top-0 left-0 w-full h-screen -z-10"
                 style={{ background: '#000000' }}
             />
+            {/* Hide Veo watermark in bottom right */}
+            <div className="fixed bottom-0 right-0 w-32 h-20 bg-black -z-10" style={{ pointerEvents: 'none' }} />
         </>
     );
 }
