@@ -1,65 +1,286 @@
-import Image from "next/image";
+'use client';
+
+import { motion } from 'framer-motion';
+import { ChevronDown, Sparkles, Workflow, Zap, Play, BarChart3, MessageSquare, Database, TrendingUp } from 'lucide-react';
+import HeroVideoBackground from '@/components/HeroVideoBackground';
+import FeatureCard from '@/components/FeatureCard';
+import ProcessStep from '@/components/ProcessStep';
+import CTAButton from '@/components/CTAButton';
 
 export default function Home() {
   return (
-    <div className="flex min-h-screen items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex min-h-screen w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
-        </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
+    <main className="min-h-screen">
+      {/* Hero Video Background */}
+      <HeroVideoBackground />
+
+      {/* Hero Section */}
+      <section className="relative h-screen flex items-center justify-center px-6">
+        <div className="relative z-10 text-center max-w-5xl mx-auto">
+          <motion.h1
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+            className="text-7xl md:text-9xl font-bold tracking-tight text-white mb-6"
           >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
+            AI Au<span className="glass-text" data-text="tom">tom</span>ation <br />That <span className="glass-text" data-text="Wor">Wor</span>ks
+          </motion.h1>
+
+          <motion.p
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.4 }}
+            className="text-xl md:text-2xl text-white/70 mb-12 max-w-2xl mx-auto"
+          >
+            Transform manual work into intelligent workflows with GreyNovo
+          </motion.p>
+
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.6 }}
+            className="flex flex-col sm:flex-row gap-4 justify-center items-center"
+          >
+            <CTAButton variant="primary" onClick={() => window.open('https://cal.com/jewel-pius-eromon-ralwq2/discovery-call', '_blank')}>Get Started</CTAButton>
+          </motion.div>
+        </div>
+
+        {/* Scroll Indicator */}
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 1, delay: 1 }}
+          className="absolute bottom-12 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2"
+        >
+          <span className="text-white/40 text-sm">Scroll to explore</span>
+          <motion.div
+            animate={{ y: [0, 8, 0] }}
+            transition={{ duration: 1.5, repeat: Infinity }}
+          >
+            <ChevronDown className="w-6 h-6 text-purple-400" />
+          </motion.div>
+        </motion.div>
+      </section>
+
+      {/* Features Section */}
+      <section className="relative py-32 px-6 bg-black">
+        <div className="max-w-7xl mx-auto">
+          <motion.h2
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="text-6xl md:text-8xl font-bold tracking-tight text-white text-center mb-20"
+          >
+            Build, Automate, Scale
+          </motion.h2>
+
+          <div className="grid md:grid-cols-3 gap-8">
+            <FeatureCard
+              icon={Sparkles}
+              title="Custom AI Workflows"
+              description="Design intelligent automation tailored to your unique business processes and goals."
+              delay={0.1}
             />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
+            <FeatureCard
+              icon={Workflow}
+              title="No-Code Integration"
+              description="Connect your favorite tools without writing a single line of code. Pure visual workflows."
+              delay={0.2}
+            />
+            <FeatureCard
+              icon={Zap}
+              title="Enterprise-Grade Reliability"
+              description="Built for scale with 99.9% uptime, advanced monitoring, and enterprise security."
+              delay={0.3}
+            />
+          </div>
         </div>
-      </main>
-    </div>
+      </section>
+
+      {/* How It Works Section */}
+      <section className="relative py-32 px-6 bg-black">
+        <div className="max-w-6xl mx-auto">
+          <motion.h2
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="text-6xl md:text-7xl font-bold tracking-tight text-white text-center mb-20"
+          >
+            Simple. Powerful. Automated.
+          </motion.h2>
+
+          <div className="grid md:grid-cols-3 gap-12 md:gap-8">
+            <ProcessStep
+              number={1}
+              icon={Database}
+              title="Connect Your Tools"
+              description="Integrate with 1000+ apps and services. Your data flows seamlessly."
+              delay={0.1}
+              showConnector={true}
+            />
+            <ProcessStep
+              number={2}
+              icon={Workflow}
+              title="Design Workflows"
+              description="Build intelligent automation with our visual editor. No coding required."
+              delay={0.3}
+              showConnector={true}
+            />
+            <ProcessStep
+              number={3}
+              icon={Zap}
+              title="Let AI Execute"
+              description="Watch your workflows run 24/7. Save hours every day automatically."
+              delay={0.5}
+              showConnector={false}
+            />
+          </div>
+        </div>
+      </section>
+
+      {/* Product Demo Section */}
+      <section className="relative py-32 px-6 bg-black">
+        <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-16 items-center">
+          <motion.div
+            initial={{ opacity: 0, x: -50 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.7 }}
+          >
+            <h2 className="text-5xl md:text-7xl font-bold tracking-tight text-white mb-6">
+              See It In Action
+            </h2>
+            <p className="text-xl text-white/70 mb-8 leading-relaxed">
+              Watch how automation transforms your business. Real-time insights, intelligent routing, and seamless execution.
+            </p>
+            <ul className="space-y-4 text-white/80">
+              {['Real-time automation monitoring', 'AI-powered decision making', 'Seamless tool integration', 'Advanced analytics dashboard'].map((feature, i) => (
+                <motion.li
+                  key={i}
+                  initial={{ opacity: 0, x: -20 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.5, delay: 0.2 + i * 0.1 }}
+                  className="flex items-center gap-3"
+                >
+                  <div className="w-6 h-6 rounded-full bg-purple-600 flex items-center justify-center flex-shrink-0">
+                    <Zap className="w-4 h-4 text-white" />
+                  </div>
+                  {feature}
+                </motion.li>
+              ))}
+            </ul>
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, x: 50 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true, amount: 0.3 }}
+            onViewportEnter={() => {
+              const video = document.getElementById('demo-video') as HTMLVideoElement;
+              if (video) video.play();
+            }}
+            onViewportLeave={() => {
+              const video = document.getElementById('demo-video') as HTMLVideoElement;
+              if (video) video.pause();
+            }}
+            transition={{ duration: 0.7 }}
+            className="relative aspect-video rounded-2xl overflow-hidden bg-black border border-purple-500/20"
+          >
+            <video
+              id="demo-video"
+              className="w-full h-full object-cover"
+              loop
+              muted
+              playsInline
+            >
+              <source src="/workflow-demo.mp4" type="video/mp4" />
+              Your browser does not support the video tag.
+            </video>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Use Cases Section */}
+      <section className="relative py-32 px-6 bg-black">
+        <div className="max-w-7xl mx-auto">
+          <motion.h2
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="text-6xl md:text-7xl font-bold tracking-tight text-white text-center mb-20"
+          >
+            Built For Every Industry
+          </motion.h2>
+
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+            {[
+              { icon: TrendingUp, title: 'Sales Automation', desc: 'Streamline your sales pipeline' },
+              { icon: MessageSquare, title: 'Customer Support', desc: 'AI-powered assistance 24/7' },
+              { icon: Database, title: 'Data Processing', desc: 'Transform data automatically' },
+              { icon: BarChart3, title: 'Marketing Workflows', desc: 'Automate campaign management' },
+            ].map((useCase, i) => (
+              <motion.div
+                key={i}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6, delay: i * 0.1 }}
+                className="p-6 rounded-xl bg-white/5 border border-white/10 hover:border-purple-500/50 transition-all duration-300 group"
+              >
+                <useCase.icon className="w-10 h-10 text-purple-400 mb-4 group-hover:scale-110 transition-transform" />
+                <h3 className="text-xl font-bold text-white mb-2">{useCase.title}</h3>
+                <p className="text-white/60">{useCase.desc}</p>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Final CTA Section */}
+      <section className="relative py-32 px-6 bg-gradient-to-b from-black via-purple-950/20 to-black">
+        <div className="max-w-4xl mx-auto text-center">
+          <motion.h2
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="text-7xl md:text-9xl font-bold tracking-tight text-white mb-6"
+          >
+            Start Automating Today
+          </motion.h2>
+
+          <motion.p
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            className="text-2xl text-white/70 mb-12"
+          >
+            Join thousands automating their work
+          </motion.p>
+
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.4 }}
+            className="flex justify-center"
+          >
+            <CTAButton
+              variant="primary"
+              className="text-lg px-16"
+              onClick={() => window.open('https://cal.com/jewel-pius-eromon-ralwq2/discovery-call', '_blank')}
+            >
+              Book a Demo
+            </CTAButton>
+          </motion.div>
+        </div>
+      </section>
+
+
+    </main>
   );
 }
