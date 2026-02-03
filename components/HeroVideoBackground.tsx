@@ -124,18 +124,6 @@ export default function HeroVideoBackground() {
                 className="fixed top-0 left-0 w-full h-screen -z-10"
                 style={{ background: '#000000' }}
             />
-
-            {loading && (
-                <div className="fixed inset-0 z-50 flex flex-col items-center justify-center bg-black">
-                    <div className="w-64 h-1 bg-white/10 rounded-full overflow-hidden">
-                        <div
-                            className="h-full bg-gradient-to-r from-purple-600 to-purple-400 transition-all duration-300"
-                            style={{ width: `${loadProgress}%` }}
-                        />
-                    </div>
-                    <p className="mt-4 text-white/60 text-sm">{loadProgress}%</p>
-                </div>
-            )}
         </>
     );
 }
