@@ -1,9 +1,9 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { ButtonHTMLAttributes } from 'react';
+import { ComponentPropsWithoutRef } from 'react';
 
-interface CTAButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
+interface CTAButtonProps extends Omit<ComponentPropsWithoutRef<'button'>, 'onAnimationStart' | 'onDragStart' | 'onDragEnd' | 'onDrag'> {
     variant?: 'primary' | 'secondary';
     children: React.ReactNode;
 }
