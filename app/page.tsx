@@ -13,53 +13,62 @@ export default function Home() {
       {/* Hero Video Background */}
       <HeroVideoBackground />
 
-      {/* Hero Section */}
-      <section className="relative h-screen flex items-center justify-center px-6">
-        <div className="relative z-10 text-center max-w-5xl mx-auto">
-          <motion.h1
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
-            className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-9xl font-bold tracking-tight text-white mb-6 leading-tight"
-          >
-            AI Au<span className="glass-text" data-text="tom">tom</span>ation <br />That <span className="glass-text" data-text="Wor">Wor</span>ks
-          </motion.h1>
+      {/* Hero Section Container (200vh tall to allow scrolling) */}
+      <div className="relative h-[200vh]">
+        {/* Sticky Wrapper: Pins content to viewport while scrolling inside container */}
+        <div className="sticky top-0 h-screen flex items-center justify-center px-6 overflow-hidden">
 
-          <motion.p
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.4 }}
-            className="text-xl md:text-2xl text-white/70 mb-12 max-w-2xl mx-auto"
-          >
-            Transform manual work into intelligent workflows with GreyNovo
-          </motion.p>
+          <div className="relative z-10 text-center max-w-6xl mx-auto mt-20">
+            <motion.h1
+              initial={{ opacity: 0, y: 30, scale: 0.9 }}
+              whileInView={{ opacity: 1, y: 0, scale: 1 }}
+              viewport={{ margin: "-100px" }} // Trigger slightly before center
+              transition={{ duration: 1.2, ease: "easeOut" }}
+              className="text-6xl sm:text-7xl md:text-8xl lg:text-9xl font-bold tracking-tight text-white mb-8 leading-tight drop-shadow-[0_0_25px_rgba(255,255,255,0.3)]"
+            >
+              AI Au<span className="glass-text drop-shadow-[0_0_15px_rgba(168,85,247,0.6)]" data-text="tom">tom</span>ation <br />
+              That <span className="glass-text drop-shadow-[0_0_15px_rgba(168,85,247,0.6)]" data-text="Wor">Wor</span>ks
+            </motion.h1>
 
+            <motion.p
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              transition={{ duration: 1, delay: 0.5 }}
+              className="text-xl md:text-3xl text-white/80 mb-12 max-w-3xl mx-auto font-light drop-shadow-lg"
+            >
+              Transform manual work into intelligent workflows with GreyNovo
+            </motion.p>
+
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.8 }}
+              className="flex flex-col sm:flex-row gap-6 justify-center items-center"
+            >
+              <CTAButton variant="primary" onClick={() => window.open('https://cal.com/jewel-pius-eromon-ralwq2/discovery-call', '_blank')}>
+                Get Started
+              </CTAButton>
+            </motion.div>
+          </div>
+
+          {/* Scroll Indicator (Only visible initially) */}
           <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.6 }}
-            className="flex flex-col sm:flex-row gap-4 justify-center items-center"
+            initial={{ opacity: 1 }}
+            animate={{ opacity: 0 }}
+            transition={{ delay: 2, duration: 1 }} // Fade out after 2s
+            className="absolute bottom-12 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 pointer-events-none"
           >
-            <CTAButton variant="primary" onClick={() => window.open('https://cal.com/jewel-pius-eromon-ralwq2/discovery-call', '_blank')}>Get Started</CTAButton>
+            <span className="text-white/40 text-sm tracking-widest uppercase">Scroll to reveal</span>
+            <motion.div
+              animate={{ y: [0, 8, 0] }}
+              transition={{ duration: 1.5, repeat: Infinity }}
+            >
+              <ChevronDown className="w-6 h-6 text-purple-400" />
+            </motion.div>
           </motion.div>
+
         </div>
-
-        {/* Scroll Indicator */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 1, delay: 1 }}
-          className="absolute bottom-12 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2"
-        >
-          <span className="text-white/40 text-sm">Scroll to explore</span>
-          <motion.div
-            animate={{ y: [0, 8, 0] }}
-            transition={{ duration: 1.5, repeat: Infinity }}
-          >
-            <ChevronDown className="w-6 h-6 text-purple-400" />
-          </motion.div>
-        </motion.div>
-      </section>
+      </div>
 
       {/* Features Section */}
       <section id="features" className="relative py-32 px-6 bg-black" aria-label="Key Features">

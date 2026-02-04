@@ -82,8 +82,12 @@ export default function HeroVideoBackground() {
         if (!ctx) return;
 
         const updateCanvasSize = () => {
-            canvas.width = window.innerWidth;
-            canvas.height = window.innerHeight;
+            const dpr = window.devicePixelRatio || 1;
+            // Set actual render size (e.g. 3840 for 1920 logical)
+            canvas.width = window.innerWidth * dpr;
+            canvas.height = window.innerHeight * dpr;
+            // Reset scale to handle logical pixels
+            ctx.scale(dpr, dpr);
         };
 
         updateCanvasSize();
@@ -143,11 +147,11 @@ export default function HeroVideoBackground() {
         <>
             <canvas
                 ref={canvasRef}
-                className="fixed top-0 left-0 w-full h-screen -z-10"
-                style={{ background: '#000000' }}
+                className="fixed top-0 left-0 w-full h-screen pointer-events-none"
+                style={{ background: '#000000', zIndex: 0 }}
             />
             {/* Hide Veo watermark in bottom right */}
-            <div className="fixed bottom-0 right-0 w-32 h-20 bg-black -z-10" style={{ pointerEvents: 'none' }} />
+            <div className="fixed bottom-0 right-0 w-32 h-20 bg-black" style={{ pointerEvents: 'none', zIndex: 1 }} />
         </>
     );
 }
