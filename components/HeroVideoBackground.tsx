@@ -144,14 +144,11 @@ export default function HeroVideoBackground() {
     }, [loading]);
 
     return (
-        <>
-            <canvas
-                ref={canvasRef}
-                className="fixed top-0 left-0 w-full h-screen pointer-events-none"
-                style={{ background: '#000000', zIndex: 0 }}
-            />
-            {/* Hide Veo watermark in bottom right */}
-            <div className="fixed bottom-0 right-0 w-32 h-20 bg-black" style={{ pointerEvents: 'none', zIndex: 1 }} />
-        </>
+        <canvas
+            ref={canvasRef}
+            // Scale 1.1 zooms in 10% to push the bottom-right Veo watermark off-screen
+            className="fixed top-0 left-0 w-full h-screen pointer-events-none scale-110"
+            style={{ background: '#000000', zIndex: 0 }}
+        />
     );
 }

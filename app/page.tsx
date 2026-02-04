@@ -6,6 +6,7 @@ import HeroVideoBackground from '@/components/HeroVideoBackground';
 import FeatureCard from '@/components/FeatureCard';
 import ProcessStep from '@/components/ProcessStep';
 import CTAButton from '@/components/CTAButton';
+import { TextEffect } from '@/components/ui/text-effect';
 
 export default function Home() {
   return (
@@ -73,15 +74,13 @@ export default function Home() {
       {/* Features Section */}
       <section id="features" className="relative py-32 px-6 bg-black" aria-label="Key Features">
         <div className="max-w-7xl mx-auto">
-          <motion.h2
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-            className="text-6xl md:text-8xl font-bold tracking-tight text-white text-center mb-20"
+          <TextEffect
+            per="char"
+            preset="fade"
+            className="text-6xl md:text-8xl font-bold tracking-tight text-white mb-20 block"
           >
             Build, Automate, Scale
-          </motion.h2>
+          </TextEffect>
 
           <div className="grid md:grid-cols-3 gap-8">
             <FeatureCard
