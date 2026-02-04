@@ -9,7 +9,7 @@ import CTAButton from '@/components/CTAButton';
 
 export default function Home() {
   return (
-    <main className="min-h-screen">
+    <main className="min-h-screen relative overflow-hidden bg-black text-white selection:bg-purple-500/30">
       {/* Hero Video Background */}
       <HeroVideoBackground />
 
@@ -62,7 +62,7 @@ export default function Home() {
       </section>
 
       {/* Features Section */}
-      <section className="relative py-32 px-6 bg-black">
+      <section id="features" className="relative py-32 px-6 bg-black" aria-label="Key Features">
         <div className="max-w-7xl mx-auto">
           <motion.h2
             initial={{ opacity: 0, y: 30 }}

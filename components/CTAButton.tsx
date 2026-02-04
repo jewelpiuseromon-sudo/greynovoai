@@ -19,7 +19,9 @@ export default function CTAButton({
             <motion.button
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
-                className={`relative px-12 py-5 rounded-full font-semibold text-white overflow-hidden group ${className}`}
+                // Accessibility: Add Focus Ring
+                className={`relative px-12 py-5 rounded-full font-semibold text-white overflow-hidden group focus:outline-none focus:ring-4 focus:ring-purple-500/50 ${className}`}
+                aria-label={typeof children === 'string' ? children : 'Call to Action'}
                 style={{
                     border: '2px solid transparent',
                     backgroundImage: 'linear-gradient(#000, #000), linear-gradient(135deg, rgba(255,255,255,0.4), rgba(192,132,252,0.3), rgba(124,58,237,0.2))',

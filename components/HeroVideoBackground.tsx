@@ -13,38 +13,60 @@ export default function HeroVideoBackground() {
     const animationFrameRef = useRef<number | null>(null);
     const startTimeRef = useRef<number | null>(null);
 
-    // Preload all frames
+    // Optimized Frame Loading (Chunked)
     useEffect(() => {
         const loadFrames = async () => {
-            const frames: HTMLImageElement[] = [];
+            const frames: HTMLImageElement[] = new Array(FRAME_COUNT);
             let loadedCount = 0;
 
-            const loadPromises = Array.from({ length: FRAME_COUNT }, (_, i) => {
-                return new Promise<void>((resolve, reject) => {
-                    const img = new Image();
-                    const frameNumber = String(i).padStart(3, '0');
-                    img.src = `/sequence/frame_${frameNumber}.jpg`;
+            // 1. Load the first 24 frames (1 second) IMMEDIATELY so animation starts fast
+            const INITIAL_CHUNK = 24;
 
-                    img.onload = () => {
-                        frames[i] = img;
-                        loadedCount++;
-                        setLoadProgress(Math.floor((loadedCount / FRAME_COUNT) * 100));
-                        resolve();
-                    };
+            const loadChunk = (startIdx: number, endIdx: number) => {
+                return Promise.all(
+                    Array.from({ length: endIdx - startIdx }, (_, i) => {
+                        const index = startIdx + i;
+                        if (index >= FRAME_COUNT) return Promise.resolve();
 
-                    img.onerror = () => {
-                        console.error(`Failed to load frame ${i}: ${img.src}`);
-                        reject();
-                    };
-                });
-            });
+                        return new Promise<void>((resolve) => {
+                            const img = new Image();
+                            // Optimize: Add loading="eager" for priority frames
+                            if (index < INITIAL_CHUNK) img.fetchPriority = "high";
+
+                            const frameNumber = String(index).padStart(3, '0');
+                            img.src = `/sequence/frame_${frameNumber}.jpg`;
+
+                            img.onload = () => {
+                                frames[index] = img;
+                                loadedCount++;
+                                setLoadProgress(Math.floor((loadedCount / FRAME_COUNT) * 100));
+                                resolve();
+                            };
+
+                            img.onerror = () => {
+                                console.warn(`Skipped frame ${index}`);
+                                resolve(); // Resolve anyway to keep going
+                            };
+                        });
+                    })
+                );
+            };
 
             try {
-                await Promise.all(loadPromises);
-                framesRef.current = frames;
-                setLoading(false);
+                // Phase 1: Critical Init (User sees this first)
+                await loadChunk(0, INITIAL_CHUNK);
+                framesRef.current = frames; // Attach what we have so far
+                setLoading(false); // Enable playback start
+
+                // Phase 2: Lazy load the rest in background chunks
+                const CHUNK_SIZE = 50;
+                for (let i = INITIAL_CHUNK; i < FRAME_COUNT; i += CHUNK_SIZE) {
+                    await loadChunk(i, i + CHUNK_SIZE);
+                    // Small breathing room for main thread
+                    await new Promise(r => setTimeout(r, 50));
+                }
             } catch (error) {
-                console.error('Error loading frames:', error);
+                console.error('Frame loading error:', error);
             }
         };
 
