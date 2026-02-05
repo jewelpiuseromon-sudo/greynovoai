@@ -58,7 +58,7 @@ export default function LiquidMetalHero({
         <section className="relative min-h-[90vh] flex items-center justify-center overflow-hidden">
             <div className="absolute inset-0 -z-10">
                 <LiquidMetal
-                    {...liquidMetalPresets.gold}
+                    {...liquidMetalPresets[2]}
                     translateY={0.2}
                     zoom={0.8}
                     style={{ position: "absolute", top: 0, left: 0, width: "100%", height: "100%" }}
