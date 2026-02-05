@@ -2,8 +2,12 @@
 
 import { motion } from 'framer-motion';
 import { ChevronDown, Sparkles, Workflow, Zap, Play, BarChart3, MessageSquare, Database, TrendingUp } from 'lucide-react';
-import { LiquidMetal, liquidMetalPresets } from '@paper-design/shaders-react';
+import dynamic from 'next/dynamic';
 import HeroVideoBackground from '@/components/HeroVideoBackground';
+
+const LiquidMetalBackground = dynamic(() => import('@/components/LiquidMetalBackground'), {
+  ssr: false,
+});
 import FeatureCard from '@/components/FeatureCard';
 import ProcessStep from '@/components/ProcessStep';
 import CTAButton from '@/components/CTAButton';
