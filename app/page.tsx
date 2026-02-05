@@ -9,7 +9,7 @@ import ProcessStep from '@/components/ProcessStep';
 import CTAButton from '@/components/CTAButton';
 import { TextEffect } from '@/components/ui/text-effect';
 
-const LiquidMetalBackground = dynamic(() => import('@/components/LiquidMetalBackground'), {
+const FluidBackground = dynamic(() => import('@/components/FluidBackground'), {
   ssr: false,
 });
 
@@ -19,7 +19,7 @@ export default function Home() {
       {/* HERO SECTION - LIQUID METAL BACKGROUND */}
       <div className="relative min-h-[90vh] flex flex-col items-center justify-center overflow-hidden">
         {/* Background Animation - Dynamically Loaded */}
-        <LiquidMetalBackground />
+        <FluidBackground />
 
         {/* Original Content */}
         <div className="relative z-10 text-center max-w-6xl mx-auto mt-20 px-6">
