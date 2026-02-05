@@ -59,8 +59,6 @@ export default function LiquidMetalHero({
             <div className="absolute inset-0 -z-10">
                 <LiquidMetal
                     {...liquidMetalPresets[2]}
-                    translateY={0.2}
-                    zoom={0.8}
                     style={{ position: "absolute", top: 0, left: 0, width: "100%", height: "100%" }}
                 />
                 {/* Overlay to ensure text readability */}
