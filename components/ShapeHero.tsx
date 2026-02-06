@@ -88,7 +88,7 @@ export function ShapeHero({
     };
 
     return (
-        <div className="relative min-h-screen w-full flex items-center justify-center overflow-hidden bg-[#030303]">
+        <div className="relative min-h-screen w-full flex items-center justify-center overflow-hidden bg-[#030303] pb-12 sm:pb-0">
             <div className="absolute inset-0 bg-gradient-to-br from-purple-500/[0.15] via-transparent to-violet-500/[0.15] blur-3xl" />
 
             <div className="absolute inset-0 overflow-hidden">
@@ -206,7 +206,7 @@ export function ShapeHero({
                     >
                         <button
                             onClick={() => window.open('https://cal.com/jewel-pius-eromon-ralwq2/discovery-call', '_blank')}
-                            className="group relative px-8 py-4 bg-gradient-to-b from-white to-white/90 text-black font-semibold rounded-xl overflow-hidden transition-all duration-300 hover:scale-105 hover:shadow-2xl hover:shadow-purple-500/20"
+                            className="group relative px-6 py-3.5 sm:px-8 sm:py-4 bg-gradient-to-b from-white to-white/90 text-black font-semibold rounded-xl overflow-hidden transition-all duration-300 hover:scale-105 hover:shadow-2xl hover:shadow-purple-500/20 min-h-[44px]"
                         >
                             {/* Glass reflection overlay */}
                             <div className="absolute inset-0 bg-gradient-to-b from-white/40 via-transparent to-transparent opacity-80" />
@@ -215,7 +215,7 @@ export function ShapeHero({
                             <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent translate-x-[-200%] group-hover:translate-x-[200%] transition-transform duration-1000 skew-x-12" />
 
                             {/* Button text */}
-                            <span className="relative z-10 flex items-center gap-2">
+                            <span className="relative z-10 flex items-center gap-2 text-sm sm:text-base">
                                 Book Free Demo
                             </span>
                         </button>
