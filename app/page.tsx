@@ -9,52 +9,13 @@ import ProcessStep from '@/components/ProcessStep';
 import CTAButton from '@/components/CTAButton';
 import { TextEffect } from '@/components/ui/text-effect';
 
-const FluidBackground = dynamic(() => import('@/components/FluidBackground'), {
-  ssr: false,
-});
+import { ShapeHero } from '@/components/ShapeHero';
 
 export default function Home() {
   return (
     <main className="min-h-screen relative overflow-hidden bg-black text-white selection:bg-purple-500/30">
-      {/* HERO SECTION - LIQUID METAL BACKGROUND */}
-      <div className="relative min-h-[90vh] flex flex-col items-center justify-center overflow-hidden">
-        {/* Background Animation - Dynamically Loaded */}
-        <FluidBackground />
-
-        {/* Original Content */}
-        <div className="relative z-10 text-center max-w-6xl mx-auto mt-20 px-6">
-          <motion.h1
-            initial={{ opacity: 0, y: 30, scale: 0.9 }}
-            whileInView={{ opacity: 1, y: 0, scale: 1 }}
-            viewport={{ margin: "-100px" }} // Trigger slightly before center
-            transition={{ duration: 1.2, ease: "easeOut" }}
-            className="text-6xl sm:text-7xl md:text-8xl lg:text-9xl font-bold tracking-tight text-white mb-8 leading-tight drop-shadow-[0_0_25px_rgba(255,255,255,0.3)]"
-          >
-            AI Au<span className="glass-text drop-shadow-[0_0_15px_rgba(168,85,247,0.6)]" data-text="tom">tom</span>ation <br />
-            That <span className="glass-text drop-shadow-[0_0_15px_rgba(168,85,247,0.6)]" data-text="Wor">Wor</span>ks
-          </motion.h1>
-
-          <motion.p
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            transition={{ duration: 1, delay: 0.5 }}
-            className="text-xl md:text-3xl text-white/80 mb-12 max-w-3xl mx-auto font-light drop-shadow-lg"
-          >
-            Transform manual work into intelligent workflows with GreyNovo
-          </motion.p>
-
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.8 }}
-            className="flex flex-col sm:flex-row gap-6 justify-center items-center"
-          >
-            <CTAButton variant="primary" onClick={() => window.open('https://cal.com/jewel-pius-eromon-ralwq2/discovery-call', '_blank')}>
-              Get Started
-            </CTAButton>
-          </motion.div>
-        </div>
-      </div>
+      {/* HERO SECTION - SHAPE HERO */}
+      <ShapeHero />
 
       {/* Features Section */}
       <section id="features" className="relative py-32 px-6 bg-black" aria-label="Key Features">
