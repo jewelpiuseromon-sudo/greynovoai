@@ -195,9 +195,18 @@ export function ShapeHero({
                     >
                         <button
                             onClick={() => window.open('https://cal.com/jewel-pius-eromon-ralwq2/discovery-call', '_blank')}
-                            className="px-8 py-4 bg-white text-black font-semibold rounded-lg hover:bg-white/90 transition-colors"
+                            className="group relative px-8 py-4 bg-gradient-to-b from-white to-white/90 text-black font-semibold rounded-xl overflow-hidden transition-all duration-300 hover:scale-105 hover:shadow-2xl hover:shadow-purple-500/20"
                         >
-                            Get Started
+                            {/* Glass reflection overlay */}
+                            <div className="absolute inset-0 bg-gradient-to-b from-white/40 via-transparent to-transparent opacity-80" />
+
+                            {/* Shine effect on hover */}
+                            <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent translate-x-[-200%] group-hover:translate-x-[200%] transition-transform duration-1000 skew-x-12" />
+
+                            {/* Button text */}
+                            <span className="relative z-10 flex items-center gap-2">
+                                Book Free Demo
+                            </span>
                         </button>
                     </motion.div>
                 </div>
